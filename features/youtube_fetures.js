@@ -1,9 +1,8 @@
 const Youtube = require('simple-youtube-api');
 const Parser = require('rss-parser');
-const youtubeKey = 'AIzaSyAgcNAPFFzp7zpuG65TvWK6OlSW82aTq3A';
 
 const parser = new Parser();
-const youtube = new Youtube(youtubeKey);
+const youtube = new Youtube(process.env.YOUTUBE_TOKEN);
 
 const startAt = Date.now;
 const lastVideos = {};
