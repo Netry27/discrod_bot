@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+require('dotenv').config();
 const fs = require('fs');
 const config = require('./configs/bot_configs.json');
 const youtubeFeature = require('./features/youtube_fetures.js');
@@ -44,4 +45,4 @@ bot.on('message', message => {
 	}
 });
 
-bot.login(config.token);
+bot.login(process.env.BOT_TOKEN);
