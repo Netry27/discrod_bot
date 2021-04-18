@@ -23,7 +23,7 @@ function StartCheckYoutube() {
 	for(const file of youtubeConfigs) {
 		const typeConfig = require(`./configs/youtube_configs/${file}`);
 		youtubeFeature.check(bot, typeConfig);
-		setInterval(function() {youtubeFeature.check(bot, typeConfig);}, 60 * 1000);
+		setInterval(function() {youtubeFeature.check(bot, typeConfig);}, 300 * 1000);
 	}
 }
 
