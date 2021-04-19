@@ -1,11 +1,12 @@
 {
-    "message" : "**{videoTitle}** новое видео от **{videoAuthorName}** \n {videoURL}",
-    "channel" : "831639846693896192",
+    "message" : "новое видео от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
+    "channel" : "833679117672120330",
     "youtubers": [
                 "Типичная Дота", 
                 "ТраВоМаН",
                 "ЧЕЛОВЕК-САМОВАР",
                 "Rizpol",
-                "Dota Watafak"        
+                "Dota Watafak",
+                "Dota 2 Maincast"       
                 ]
 }

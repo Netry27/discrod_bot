@@ -1,0 +1,8 @@
+{
+    "message" : "новое видео от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
+    "channel" : "833744263480344637",
+    "youtubers": [
+                "Marmok", 
+                "Marmok Live"   
+                ]
+}
