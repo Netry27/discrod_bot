@@ -2,10 +2,10 @@
     "message" : "Дотеры, {videoAuthorName} выпустил только что новое видео: **{videoTitle}**\n {videoURL}",
     "channel" : "831639846693896192",
     "youtubers": [
-                "https://www.youtube.com/user/OpuramuUp", 
-                "https://www.youtube.com/channel/UCt9kDudA1tTXS7TR-g2X_-A",
-                "https://www.youtube.com/user/facts2dota",
-                "https://www.youtube.com/channel/UCTXCACeuoZJggkbuJ0w7_bg",
-                "https://www.youtube.com/user/DarduinMyMenlon"        
+                "Типичная Дота", 
+                "ТраВоМаН",
+                "ЧЕЛОВЕК-САМОВАР",
+                "Rizpol",
+                "Dota Watafak"        
                 ]
 }
