@@ -34,7 +34,10 @@ bot.on('message', message => {
 
 	const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
 	const commandName = args.shift().toLowerCase();
-	if(!bot.commands.has(commandName)) return;
+	if(!bot.commands.has(commandName)) {
+		message.reply(`В списке команд нет, введенной команды ${commandName}`);
+		return console.log(`Dont have command ${commandName}`);
+	}
 	const command = bot.commands.get(commandName);
 
 	if (command.args && !args.length) {
