@@ -9,7 +9,6 @@ const lastVideos = {};
 module.exports = { check : check };
 
 async function check(bot, youtubeConfig) {
-	console.log(`Checking: ${youtubeConfig.name}...`);
 	youtubeConfig.youtubers.forEach(async (youtuber) => {
 		try{
 			console.log(`[${youtuber.length >= 10 ? youtuber.slice(0, 10) + '...' : youtuber}] | Start cheking...`);
@@ -22,6 +21,9 @@ async function check(bot, youtubeConfig) {
 
 			const channel = bot.channels.cache.get(youtubeConfig.channel);
 			if(!channel) return console.log(`Channel ${youtubeConfig.channel} not found`);
+
+			const duplicateMessage = await isDuplicateVideo(channel, video);
+			if(duplicateMessage) return console.log(`Bot already publish video with name ${video.title}`);
 
 			channel.send(
 				youtubeConfig.message
@@ -39,6 +41,18 @@ async function check(bot, youtubeConfig) {
 	});
 }
 
+async function isDuplicateVideo(channel, video) {
+	const finalArray = [];
+	channel.messages.fetch({ limit: 10 }).then(async messages => {
+		const putInArray = async (data) => finalArray.push(data);
+
+		for (const message of messages.array()) {
+			await putInArray(`${message.author.username} : ${message.content}`);
+			console.log(`${message.content} === ${video.title}`);
+			return message.content.includes(video.title);
+		}
+	});
+}
 
 async function getYoutubeChannelInfos(name) {
 	console.log(`[${name.length >= 10 ? name.slice(0, 10) + '...' : name}]`);

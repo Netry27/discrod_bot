@@ -1,9 +1,5 @@
 {
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833712830989074482",
-    "youtubers": [
-                "MMORPG.SU. Онлайн игры", 
-                "Игромания",
-                "Game Juice"  
-                ]
+    "youtubers": ["MMORPG.SU. Онлайн игры"]
 }

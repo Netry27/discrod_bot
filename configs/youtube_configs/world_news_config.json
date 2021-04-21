@@ -2,9 +2,8 @@
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833746241849524294",
     "youtubers": [
-                "Cut The Crap", 
-                "Dima Maleev",
+                "Cut The Crap",
                 "Руслан Усачев",
-                "This is Хорошо"     
+                "This is Хорошо"  
                 ]
 }
