@@ -25,7 +25,7 @@ module.exports = {
 			return console.log(`Role ${roleName} incorrect`);
 		}
 
-		const forbidRoles = ['Admin', 'everyone'];
+		const forbidRoles = ['Admin', 'everyone', 'Пенетратор'];
 		const allowRoles = forbidRoles.find((role) => {
 			console.log(`${targetRole} === ${role}`);
 			return targetRole.name === role;
