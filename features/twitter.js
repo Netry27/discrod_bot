@@ -16,10 +16,10 @@ module.exports = (bot, twitterConfigFiles) => {
 
 		twitterConfig.accountsID.forEach((config) => {
 			try{
-				const stream = Twit.stream('statuses/filter', { track: config });
+				const stream = Twit.stream('statuses/filter', { follow: config });
 				stream.on('tweet', (tweet)=>{
 
-					if (tweet.retweeted_status == undefined) {
+					if (tweet.retweeted_status === undefined) {
 						const twitterMessage = `**${tweet.user.name}**, только что опубликовал новый твит, здесь: \nhttps://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 						bot.channels.cache.get(twitterConfig.channelId).send(twitterMessage);
 					}
