@@ -8,6 +8,7 @@ module.exports = {
 		const supportChannelID = '833996664850088017';
 		const messageChannel = message.channel.id;
 		const rolesChannel = message.guild.channels.cache.get(rolesChannelID);
+		const supportChannel = message.guild.channels.cache.get(supportChannelID);
 
 		if(messageChannel != rolesChannelID) {
 			message.reply(`что бы получить роль напиши в этот чат ${rolesChannel}.`);
@@ -16,18 +17,30 @@ module.exports = {
 
 		const roleName = args.shift();
 		const targetRole = message.guild.roles.cache.find((role) => {
-			console.log(`${role.name} == ${roleName}`);
 			return role.name === roleName;
 		});
 
 		if(!targetRole) {
-			const supportChannel = message.guild.channels.cache.get(supportChannelID);
 			message.reply(`такой роли **${roleName}** еще нет, будь первым, напиши в ${supportChannel}`);
 			return console.log(`Role ${roleName} incorrect`);
 		}
 
-		const targetUser = message.member;
+		const forbidRoles = ['Admin', 'everyone'];
+		const allowRoles = forbidRoles.find((role) => {
+			console.log(`${targetRole} === ${role}`);
+			return targetRole.name === role;
+		});
 
+		if(allowRoles) {
+			let reply = `извини, но ты не можешь получить роль: **${targetRole.name}**, так как она очень важна для сервера.`;
+			if(allowRoles == 'Admin') {
+				reply += `\n Если ты, считаешь что готов, напиши в ${supportChannel}`;
+			}
+			message.reply(reply);
+			return console.log(`Trying to get the role: ${roleName}`);
+		}
+
+		const targetUser = message.member;
 		const isAlreadyRole = message.member.roles.cache.find((role) => {
 			return role === targetRole;
 		});
