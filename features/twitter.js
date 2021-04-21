@@ -16,12 +16,10 @@ module.exports = (bot, twitterConfigFiles) => {
 
 		twitterConfig.accountsID.forEach((config) => {
 			try{
-				const stream = Twit.stream('statuses/filter', {
-					follow: config,
-				});
+				const stream = Twit.stream('statuses/filter', { follow: config }, '-filter:retweets');
 				stream.on('tweet', (tweet)=>{
 
-					if(isReply) {
+					if (tweet.retweeted_status == undefined) {
 						const twitterMessage = `**${tweet.user.name}**, только что опубликовал новый твит, здесь: \nhttps://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 						bot.channels.cache.get(twitterConfig.channelId).send(twitterMessage);
 					}
@@ -31,14 +29,5 @@ module.exports = (bot, twitterConfigFiles) => {
 				console.log(err);
 			}
 		});
-	}
-
-	function isReply(tweet) {
-		if (tweet.retweeted_status
-          || tweet.in_reply_to_status_id
-          || tweet.in_reply_to_status_id_str
-          || tweet.in_reply_to_user_id
-          || tweet.in_reply_to_user_id_str
-          || tweet.in_reply_to_screen_name) {return true;}
 	}
 };
