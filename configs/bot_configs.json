@@ -1,3 +1,35 @@
 {
-    "prefix" : "!"
+    "prefix" : "!",
+    "games" : [
+        "Death Stranding",
+        "Cyberpunk 2077",
+        "Control",
+        "The Witcher 3",
+        "Dying Light",
+        "Лото Забава",
+        "Dota 2", 
+        "CS:GO",
+        "Age of Empires",
+        "Borderlands 3",
+        "Don't Starve",
+        "For Honor",
+        "Left 4 Dead 2",
+        "In Takes Two",
+        "Ghostrunner",
+        "Half-Life: Alyx",
+        "No Man's Sky",
+        "Гвинт",
+        "Outriders",
+        "Mafia III",
+        "Red Dead Redemption 2",
+        "Serious Sam 4",
+        "Far Cry 5",
+        "Dark Souls III",
+        "Dragon Age: Inquisition",
+        "S.T.A.L.K.E.R.: Shadow of Chernobyl",
+        "Valheim",
+        "Days Gone",
+        "Horizon Zero Dawn",
+        "DOOM Eternal"
+    ]
 }

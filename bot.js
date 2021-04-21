@@ -2,11 +2,13 @@ const Discord = require('discord.js');
 require('dotenv').config();
 const fs = require('fs');
 const config = require('./configs/bot_configs.json');
+const twitterStream = require('./features/twitter');
 // const youtubeFeature = require('./features/youtube_fetures.js');
 
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection;
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const twitterConfigFiles = fs.readdirSync('./configs/twitter_configs').filter(file => file.endsWith('.json'));
 // const youtubeConfigs = fs.readdirSync('./configs/youtube_configs').filter(file => file.endsWith('.json'));
 
 for(const file of commandFiles) {
@@ -16,10 +18,17 @@ for(const file of commandFiles) {
 
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}!`);
-	bot.user.setActivity('Death Stranding', { type: 'PLAYING' });
+	RandomStatus();
+	setInterval(RandomStatus, 360 * 1000);
+	twitterStream(bot, twitterConfigFiles);
 	// StartCheckYoutube();
 });
 
+function RandomStatus() {
+	const allGames = config.games;
+	const game = allGames[Math.floor(Math.random() * allGames.length)];
+	bot.user.setActivity(game, { type: 'PLAYING' });
+}
 // function StartCheckYoutube() {
 // for(const file of youtubeConfigs) {
 // const typeConfig = require(`./configs/youtube_configs/${file}`);
