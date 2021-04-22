@@ -46,6 +46,26 @@ function RandomStatus() {
 
 bot.on('message', message => {
 
+	const supportsChannelID = '833996664850088017';
+	const adminDm = '434076000733888526';
+
+	if(message.channel.id === supportsChannelID && !message.author.bot) {
+		const user = bot.users.cache.get(adminDm);
+		if(!user) return message.channel.send('@Netry, возник вопрос, который решить сможет твоя супер сила!');
+
+		const supportChannel = message.guild.channels.cache.get(supportsChannelID);
+		const notifaction = `Новое сообщение на канале ${supportChannel}, у ${message.author}, возник вопрос.`;
+		const data = message.content;
+
+		user.send(notifaction);
+		user.send(data);
+
+		const reply = `Ваше сообщение было перенаправлено лично ${user}, вскорее с Вами свяжуться высшие силы. \n\n С ув. Администрация сервера!`;
+
+		return message.reply(reply);
+	}
+
+
 	if(!message.content.startsWith(config.prefix) || message.author.bot) return;
 
 	const args = message.content.slice(config.prefix.length).trim().split(/ +/g);

@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'role',
 	args: true,
-	usage: '<name role>',
+	usage: 'name role',
 
 	execute(message, args) {
 		const rolesChannelID = '833992284563308554';
