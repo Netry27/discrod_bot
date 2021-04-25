@@ -34,7 +34,6 @@ module.exports = {
 			targetContent += '\n\n С ув. Администрация Сервера!';
 
 			channel.send(targetContent);
-			return finalArray;
 		});
 	},
 };

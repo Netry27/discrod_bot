@@ -2,17 +2,16 @@ const Youtube = require('simple-youtube-api');
 const Parser = require('rss-parser');
 
 const parser = new Parser();
-const youtube = new Youtube(process.env.YOUTUBE_TOKEN);
-
 const startAt = Date.now;
 const lastVideos = {};
 module.exports = { check : check };
 
 async function check(bot, youtubeConfig) {
+	const youtube = new Youtube(youtubeConfig.token);
 	youtubeConfig.youtubers.forEach(async (youtuber) => {
 		try{
-			console.log(`[${youtuber.length >= 10 ? youtuber.slice(0, 10) + '...' : youtuber}] | Start cheking...`);
-			const channelInfos = await getYoutubeChannelInfos(youtuber);
+			console.log(`[${youtuber.length >= 15 ? youtuber.slice(0, 15) + '...' : youtuber}] | Start cheking...`);
+			const channelInfos = await getYoutubeChannelInfos(youtuber, youtube);
 			if(!channelInfos) return console.log(`Invalid name youtuber: ${youtuber}`);
 
 			const rssURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelInfos.id}`;
@@ -22,15 +21,31 @@ async function check(bot, youtubeConfig) {
 			const channel = bot.channels.cache.get(youtubeConfig.channel);
 			if(!channel) return console.log(`Channel ${youtubeConfig.channel} not found`);
 
-			const duplicateMessage = await isDuplicateVideo(channel, video);
-			if(duplicateMessage) return console.log(`Bot already publish video with name ${video.title}`);
+			const title = youtubeConfig.message
+				.replace('{videoURL}', video.link)
+				.replace('{videoAuthorName}', video.author)
+				.replace('{videoTitle}', video.title);
 
-			channel.send(
-				youtubeConfig.message
-					.replace('{videoURL}', video.link)
-					.replace('{videoAuthorName}', video.author)
-					.replace('{videoTitle}', video.title),
-			);
+			const oldMessages = await channel.messages.fetch({ limit: 10 }).then(async messages => {
+				const final = [];
+				const putInArray = async (data) => final.push(data);
+
+				for (const message of messages.array()) {
+					await putInArray(message.content);
+				}
+				return final;
+			});
+
+			console.log('Check old message');
+			const msg = oldMessages.find(msgs => {
+				if(msgs == title) {
+					return msgs;
+				}
+			});
+			console.log(msg);
+			if(msg) return console.log(`Video from YouTuber ${video.author} already published`);
+
+			channel.send(title);
 			formatDate(new Date(video.pubDate));
 			console.log('Notification Send!');
 			lastVideos[channelInfos.raw.snippet.title] = video;
@@ -41,20 +56,7 @@ async function check(bot, youtubeConfig) {
 	});
 }
 
-async function isDuplicateVideo(channel, video) {
-	const finalArray = [];
-	channel.messages.fetch({ limit: 10 }).then(async messages => {
-		const putInArray = async (data) => finalArray.push(data);
-
-		for (const message of messages.array()) {
-			await putInArray(`${message.author.username} : ${message.content}`);
-			console.log(`${message.content} === ${video.title}`);
-			return message.content.includes(video.title);
-		}
-	});
-}
-
-async function getYoutubeChannelInfos(name) {
+async function getYoutubeChannelInfos(name, youtube) {
 	console.log(`[${name.length >= 10 ? name.slice(0, 10) + '...' : name}]`);
 	let channel = null;
 	const id = getYoutubeChannelIdFromURL(name);

@@ -1,4 +1,6 @@
 {
+    "token": "AIzaSyCnFj3q44b_AjcUhUlwtH0QSs0kAuRmr20",
+    "request_Interval" : 3600000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**:\n {videoURL}",
     "channel" : "833684174673936394",
     "youtubers": [

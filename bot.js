@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const config = require('./configs/bot_configs.json');
 // const twitterStream = require('./features/twitter');
-// const youtubeStream = require('./features/youtube');
+const youtubeStream = require('./features/youtube');
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -11,7 +11,7 @@ bot.commands = new Discord.Collection;
 const fs = require('fs');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 // const twitterConfigFiles = fs.readdirSync('./configs/twitter_configs').filter(file => file.endsWith('.json'));
-// const youtubeConfigs = fs.readdirSync('./configs/youtube_configs').filter(file => file.endsWith('.json'));
+const youtubeConfigs = fs.readdirSync('./configs/youtube_configs').filter(file => file.endsWith('.json'));
 
 for(const file of commandFiles) {
 	const command = require(`./commands/${file}`);
@@ -22,7 +22,7 @@ bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}!`);
 	setBotStatus();
 	// twitterStream(bot, twitterConfigFiles);
-	// startStreamYoutube();
+	startStreamYoutube();
 });
 
 function setBotStatus() {
@@ -36,13 +36,14 @@ function RandomStatus() {
 	bot.user.setActivity(game, { type: 'PLAYING' });
 }
 
-// function startStreamYoutube() {
-// for(const file of youtubeConfigs) {
-// const typeConfig = require(`./configs/youtube_configs/${file}`);
-// youtubeStream.check(bot, typeConfig);
-// setInterval(function() {youtubeStream.check(bot, typeConfig);}, 1200 * 1000);
-// }
-// }
+function startStreamYoutube() {
+	for(const file of youtubeConfigs) {
+		const typeConfig = require(`./configs/youtube_configs/${file}`);
+		youtubeStream.check(bot, typeConfig);
+		console.log(file.request_Interval);
+		setInterval(function() {youtubeStream.check(bot, typeConfig);}, 3600 * 1000);
+	}
+}
 
 bot.on('message', message => {
 
