@@ -8,6 +8,11 @@ module.exports = { check : check };
 
 async function check(bot, youtubeConfig) {
 	const youtube = new Youtube(youtubeConfig.token);
+
+	youtubeConfig.youtubers.forEach((youtuber) => {
+		console.log(youtuber);
+	});
+
 	youtubeConfig.youtubers.forEach(async (youtuber) => {
 		try{
 			console.log(`[${youtuber.length >= 15 ? youtuber.slice(0, 15) + '...' : youtuber}] | Start cheking...`);

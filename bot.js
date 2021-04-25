@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const config = require('./configs/bot_configs.json');
-// const twitterStream = require('./features/twitter');
+const twitterStream = require('./features/twitter');
 const youtubeStream = require('./features/youtube');
 
 const Discord = require('discord.js');
@@ -10,7 +10,7 @@ bot.commands = new Discord.Collection;
 
 const fs = require('fs');
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-// const twitterConfigFiles = fs.readdirSync('./configs/twitter_configs').filter(file => file.endsWith('.json'));
+const twitterConfigFiles = fs.readdirSync('./configs/twitter_configs').filter(file => file.endsWith('.json'));
 const youtubeConfigs = fs.readdirSync('./configs/youtube_configs').filter(file => file.endsWith('.json'));
 
 for(const file of commandFiles) {
@@ -21,13 +21,13 @@ for(const file of commandFiles) {
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}!`);
 	setBotStatus();
-	// twitterStream(bot, twitterConfigFiles);
+	twitterStream(bot, twitterConfigFiles);
 	startStreamYoutube();
 });
 
 function setBotStatus() {
 	RandomStatus();
-	setInterval(RandomStatus, 360 * 1000);
+	setInterval(RandomStatus, 60 * 1000);
 }
 
 function RandomStatus() {

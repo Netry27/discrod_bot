@@ -14,13 +14,13 @@ module.exports = (bot, twitterConfigFiles) => {
 	for(const file of twitterConfigFiles) {
 		const twitterConfig = require(`../configs/twitter_configs/${file}`);
 
-		twitterConfig.accountsID.forEach((config) => {
+		twitterConfig.accountsID.forEach((accountID) => {
 			try{
-				const stream = Twit.stream('statuses/filter', { follow: config });
+				console.log(`Config Account Id ${accountID}`);
+				const stream = Twit.stream('statuses/filter', { follow: accountID });
 				stream.on('tweet', (tweet)=>{
-
-					if (tweet.retweeted_status == undefined) {
-						const twitterMessage = `**${tweet.user.name}**, **Test** только что опубликовал новый твит, здесь: \nhttps://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+					if (tweet.user.id == accountID) {
+						const twitterMessage = `**${tweet.user.name}**, только что опубликовал новый твит: \nhttps://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 						bot.channels.cache.get(twitterConfig.channelId).send(twitterMessage);
 					}
 				});
