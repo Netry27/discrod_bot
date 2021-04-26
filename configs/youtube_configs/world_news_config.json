@@ -3,9 +3,5 @@
     "request_Interval" : 7200000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833746241849524294",
-    "youtubers": [
-                "Cut The Crap",
-                "Руслан Усачев",
-                "This is Хорошо"  
-                ]
+    "youtubers": ["Cut The Crap", "Руслан Усачев", "This is Хорошо", "вДудь", "Marvel/DC: Geek Movies", "Антон Птушкин"]
 }

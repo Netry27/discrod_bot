@@ -1,7 +1,6 @@
 {
     "token": "AIzaSyDhqRlijjrXHle7qtuLF7wDKEIYm9iajbA",
-    "request_Interval" : 3600000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833712830989074482",
-    "youtubers": ["MMORPG.SU. Онлайн игры"]    
+    "youtubers": ["MMORPG.SU. Онлайн игры", "Игромания", "Game Juice", "DTF", "XYZ", "AWE me"]    
 }

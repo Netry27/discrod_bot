@@ -3,9 +3,5 @@
     "request_Interval" : 3600000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**:\n {videoURL}",
     "channel" : "833684174673936394",
-    "youtubers": [
-                "Nerkin", 
-                "Uncle Cublay",
-                "Insurgento"    
-                ]
+    "youtubers": ["Nerkin", "Uncle Cublay", "Insurgento"]
 }

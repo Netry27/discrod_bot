@@ -7,11 +7,16 @@ const lastVideos = {};
 module.exports = { check : check };
 
 async function check(bot, youtubeConfig) {
-	const youtube = new Youtube(youtubeConfig.token);
+	const time = new Date;
+	const hours = time.getHours();
 
-	youtubeConfig.youtubers.forEach((youtuber) => {
-		console.log(youtuber);
-	});
+	console.log(`Hours now ${hours}`);
+	if(hours < 8 || hours > 22) {
+		bot.channels.cache.get('831639846693896192').send('Все ютуберы спят');
+		return console.log('Youtubers Sleep');
+	}
+
+	const youtube = new Youtube(youtubeConfig.token);
 
 	youtubeConfig.youtubers.forEach(async (youtuber) => {
 		try{

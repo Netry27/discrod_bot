@@ -1,12 +1,6 @@
 {
     "token": "AIzaSyAgcNAPFFzp7zpuG65TvWK6OlSW82aTq3A",
-    "request_Interval" : 3600000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833679117672120330",
-    "youtubers": [
-                "Типичная Дота",                
-                "ТраВоМаН",
-                "ЧЕЛОВЕК-САМОВАР",
-                "Dota Watafak" 
-                ]
+    "youtubers": ["Типичная Дота", "ТраВоМаН", "ЧЕЛОВЕК-САМОВАР", "Dota Watafak", "AnthonyShow"]
 }
