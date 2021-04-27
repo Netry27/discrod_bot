@@ -1,7 +1,5 @@
 {
-    "token": "AIzaSyB8EJZ4Q2J-YqQutWyeouBx-tsWJvEw-tA",
-    "request_Interval" : 7200000,
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833746241849524294",
-    "youtubers": ["Cut The Crap", "Руслан Усачев", "This is Хорошо", "вДудь", "Marvel/DC: Geek Movies", "Антон Птушкин"]
+    "youtubers": ["Руслан Усачев", "This is Хорошо"]
 }

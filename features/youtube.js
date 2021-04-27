@@ -4,6 +4,7 @@ const Parser = require('rss-parser');
 const parser = new Parser();
 const startAt = Date.now;
 const lastVideos = {};
+const youtube = new Youtube(process.env.YOUTUBE_TOKEN);
 module.exports = { check : check };
 
 async function check(bot, youtubeConfig) {
@@ -11,17 +12,15 @@ async function check(bot, youtubeConfig) {
 	const hours = time.getHours();
 
 	console.log(`Hours now ${hours}`);
-	if(hours < 8 || hours > 22) {
+	if(hours < 9 || hours > 19) {
 		bot.channels.cache.get('831639846693896192').send('Все ютуберы спят');
 		return console.log('Youtubers Sleep');
 	}
 
-	const youtube = new Youtube(youtubeConfig.token);
-
 	youtubeConfig.youtubers.forEach(async (youtuber) => {
 		try{
 			console.log(`[${youtuber.length >= 15 ? youtuber.slice(0, 15) + '...' : youtuber}] | Start cheking...`);
-			const channelInfos = await getYoutubeChannelInfos(youtuber, youtube);
+			const channelInfos = await getYoutubeChannelInfos(youtuber);
 			if(!channelInfos) return console.log(`Invalid name youtuber: ${youtuber}`);
 
 			const rssURL = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelInfos.id}`;
@@ -66,7 +65,7 @@ async function check(bot, youtubeConfig) {
 	});
 }
 
-async function getYoutubeChannelInfos(name, youtube) {
+async function getYoutubeChannelInfos(name) {
 	console.log(`[${name.length >= 10 ? name.slice(0, 10) + '...' : name}]`);
 	let channel = null;
 	const id = getYoutubeChannelIdFromURL(name);

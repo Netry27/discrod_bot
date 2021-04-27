@@ -1,6 +1,5 @@
 {
-    "token": "AIzaSyBl3XKQ7AacQ6mEKcHrGJo0-LN15fnHgjA",
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "836191093590065202",
-    "youtubers": ["ТОПЛЕС", "Физика от Побединского", "SuperCrastan"]
+    "youtubers": ["ТОПЛЕС"]
 }

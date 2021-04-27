@@ -1,6 +1,5 @@
 {
-    "token": "AIzaSyDhqRlijjrXHle7qtuLF7wDKEIYm9iajbA",
     "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833712830989074482",
-    "youtubers": ["MMORPG.SU. Онлайн игры", "Игромания", "Game Juice", "https://www.youtube.com/channel/UCBDLWj5X5D9bvBa3JIMMTIQ", "https://www.youtube.com/channel/UCtJsE0SDhyS4ib2evb5k3gg", "AWE me"]    
+    "youtubers": ["MMORPG.SU. Онлайн игры", "https://www.youtube.com/channel/UCtJsE0SDhyS4ib2evb5k3gg"]    
 }
