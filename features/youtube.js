@@ -12,7 +12,7 @@ async function check(bot, youtubeConfig) {
 	const hours = time.getHours();
 
 	console.log(`Hours now ${hours}`);
-	if(hours < 9 || hours > 19) {
+	if(hours < 6 || hours > 18) {
 		bot.channels.cache.get('831639846693896192').send('Все ютуберы спят');
 		return console.log('Youtubers Sleep');
 	}
