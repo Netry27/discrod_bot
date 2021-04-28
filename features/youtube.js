@@ -13,7 +13,6 @@ async function check(bot, youtubeConfig) {
 
 	console.log(`Hours now ${hours}`);
 	if(hours < 6 || hours > 18) {
-		bot.channels.cache.get('831639846693896192').send('Все ютуберы спят');
 		return console.log('Youtubers Sleep');
 	}
 
@@ -45,7 +44,6 @@ async function check(bot, youtubeConfig) {
 				return final;
 			});
 
-			console.log('Check old message');
 			const msg = oldMessages.find(msgs => {
 				if(msgs == title) {
 					return msgs;
@@ -79,8 +77,6 @@ async function getYoutubeChannelInfos(name) {
 			channel = channels[0];
 		}
 	}
-
-	console.log(`[${name.length >= 10 ? name.slice(0, 10) + '...' : name}] | Title of the resolved channel: ${channel.raw ? channel.raw.snippet.title : 'err'}`);
 	return channel;
 }
 
@@ -111,9 +107,7 @@ async function checkVideos(youtubeChannelName, rssURL) {
 }
 
 async function getLastVideo(youtubeChannelName, rssURL) {
-	console.log(`[${youtubeChannelName}]  | Getting videos...`);
 	const content = await parser.parseURL(rssURL);
-	console.log(`[${youtubeChannelName}]  | ${content.items.length} videos found`);
 	const tLastVideos = content.items.sort((a, b) => {
 		const aPubDate = new Date(a.pubDate || 0).getTime();
 		const bPubDate = new Date(b.pubDate || 0).getTime();

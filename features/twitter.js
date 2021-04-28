@@ -16,7 +16,6 @@ module.exports = (bot, twitterConfigFiles) => {
 
 		twitterConfig.accountsID.forEach((accountID) => {
 			try{
-				console.log(`Config Account Id ${accountID}`);
 				const stream = Twit.stream('statuses/filter', { follow: accountID });
 				stream.on('tweet', (tweet)=>{
 					if (tweet.user.id == accountID) {
