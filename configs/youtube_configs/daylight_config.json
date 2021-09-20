@@ -1,5 +1,5 @@
 {
-    "message" : "<@882661233638125648> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
+    "message" : "<@&882661233638125648> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "889524504307564574",
     "youtubers": ["Иностранец Game"]
 }

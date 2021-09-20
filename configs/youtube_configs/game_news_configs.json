@@ -1,5 +1,5 @@
 {
-    "message" : "<@833986002360074240> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
+    "message" : "<@&833986002360074240> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833712830989074482",
     "youtubers": ["MMORPG.SU. Онлайн игры"]    
 }
