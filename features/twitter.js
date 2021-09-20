@@ -19,8 +19,11 @@ module.exports = (bot, twitterConfigFiles) => {
 				const stream = Twit.stream('statuses/filter', { follow: accountID });
 				stream.on('tweet', (tweet)=>{
 					if (tweet.user.id == accountID) {
-						const twitterMessage = `**${tweet.user.name}**, только что опубликовал новый твит: \nhttps://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
-						bot.channels.cache.get(twitterConfig.channelId).send(twitterMessage);
+						const link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+						const message = twitterConfig.message
+							.replace('{link}', link)
+							.replace('{user}', tweet.user.name);
+						bot.channels.cache.get(twitterConfig.channelId).send(message);
 					}
 				});
 			}
