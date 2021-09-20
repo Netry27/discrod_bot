@@ -1,5 +1,5 @@
 {
-    "message" : "<@Dota2> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
+    "message" : "<@&731896703975817266> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**  \n {videoURL}",
     "channel" : "833679117672120330",
     "youtubers": ["Типичная Дота", "Dota Watafak"]
 }
