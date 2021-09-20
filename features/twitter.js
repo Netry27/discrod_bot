@@ -20,9 +20,7 @@ module.exports = (bot, twitterConfigFiles) => {
 				stream.on('tweet', (tweet)=>{
 					if (tweet.user.id == accountID) {
 						const link = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
-						const message = twitterConfig.message
-							.replace('{link}', link)
-							.replace('{user}', tweet.user.name);
+						const message = twitterConfig.message.replace('{link}', link);
 						bot.channels.cache.get(twitterConfig.channelId).send(message);
 					}
 				});
