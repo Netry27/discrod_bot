@@ -41,7 +41,7 @@ function startStreamYoutube() {
 		const typeConfig = require(`./configs/youtube_configs/${file}`);
 		youtubeStream.check(bot, typeConfig);
 		console.log(file.request_Interval);
-		setInterval(function() {youtubeStream.check(bot, typeConfig);}, 7200 * 1000);
+		setInterval(function() {youtubeStream.check(bot, typeConfig);}, 11000 * 1000);
 	}
 }
 

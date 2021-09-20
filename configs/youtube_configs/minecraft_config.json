@@ -1,5 +1,5 @@
 {
-    "message" : "**Новое видео** от **{videoAuthorName}**: **{videoTitle}**:\n {videoURL}",
+    "message" : "<@833986076410118155> **Новое видео** от **{videoAuthorName}**: **{videoTitle}**:\n {videoURL}",
     "channel" : "833684174673936394",
     "youtubers": ["Nerkin"]
 }
