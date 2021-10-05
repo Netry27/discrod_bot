@@ -21,22 +21,31 @@ module.exports = {
 		});
 
 		if(!targetRole) {
-			message.reply(`такой роли **${roleName}** еще нет, будь первым, напиши в ${supportChannel}`);
+			message.reply(`Такой роли **${roleName}** еще нет, будь первым, напиши в ${supportChannel}`);
 			return console.log(`Role ${roleName} incorrect`);
 		}
 
-		const forbidRoles = ['Admin', 'everyone', 'Пенетратор'];
+		const forbidRoles = ['Admin', 'everyone', 'Пенетратор', 'Head'];
 		const allowRoles = forbidRoles.find((role) => {
-			console.log(`${targetRole} === ${role}`);
 			return targetRole.name === role;
 		});
 
 		if(allowRoles) {
-			let reply = `извини, но ты не можешь получить роль: **${targetRole.name}**, так как она очень важна для сервера.`;
+			let reply = `Извини, но ты не можешь получить роль: **${targetRole.name}**, так как она очень важна для сервера.`;
 			if(allowRoles == 'Admin') {
 				reply += `\n Если ты, считаешь что готов, напиши в ${supportChannel}`;
 			}
 			message.reply(reply);
+			return console.log(`Trying to get the role: ${roleName}`);
+		}
+
+		const boosterRoles = ['Server Booster'];
+		const allowBoostRole = boosterRoles.find((role) => {
+			return targetRole.name === role;
+		});
+		if(allowBoostRole) {
+			const replyBoost = `Извини, но ты не можешь получить роль: **${targetRole.name}**, для того что бы ее получить тебе нужно забустить, наш сервер.`;
+			message.reply(replyBoost);
 			return console.log(`Trying to get the role: ${roleName}`);
 		}
 
@@ -46,12 +55,12 @@ module.exports = {
 		});
 
 		if(isAlreadyRole) {
-			message.reply(`пользователь уже имеет роль ${targetRole}`);
+			message.reply(`Пользователь уже имеет роль ${targetRole}`);
 			return console.log(`${targetUser} user already has role ${targetRole}`);
 		}
 
 		targetUser.roles.add(targetRole);
-		message.reply(`теперь у тебя есть роль ${targetRole}, **хорошей игры!**`);
+		message.reply(`Теперь у тебя есть роль ${targetRole}, **хорошей игры!**`);
 		console.log(`${targetUser} give role ${targetRole}`);
 	},
 };
