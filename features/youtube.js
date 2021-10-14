@@ -34,7 +34,7 @@ async function check(bot, youtubeConfig) {
 				.replace('{videoAuthorName}', video.author)
 				.replace('{videoTitle}', video.title);
 
-			const oldMessages = await channel.messages.fetch({ limit: 15 }).then(async messages => {
+			const oldMessages = await channel.messages.fetch({ limit: 200 }).then(async messages => {
 				const final = [];
 				const putInArray = async (data) => final.push(data);
 
